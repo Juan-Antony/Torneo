@@ -1,0 +1,18 @@
+<h1>ORGANIZAR TORNEO</h1>
+
+<form action="verequipo" method="POST">
+    <input type="hidden" name="id" value="<%= elem.id %>" />
+    <input type="submit" value="Ver Equipo" />
+</form>
+<br>
+<form action="verfixture" method="POST">
+    <input type="hidden" name="id" value="<%= elem.id %>" />
+    <input type="submit" value="Ver Fixture" />
+</form>
+<br>
+<form action="verposiciones" method="POST">
+    <input type="hidden" name="id" value="<%= elem.id %>" />
+    <input type="submit" value="Ver Tabla de Posiciones" />
+</form>
+<br>
+<input type="button" value="Regresar" onclick="history.back()" />

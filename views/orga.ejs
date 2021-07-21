@@ -1,0 +1,56 @@
+<h1>TORNEOS</h1>
+
+<form action="logout" style="display:inline">
+    <input type="submit" value="Cerrar sesion" />
+</form>
+<br>
+<form action="nombreTor" METHOD="POST">
+    <div>
+        <label class="form-label">Buscar nombre torneo:</label>
+        <input id="form-nombre" class="form-control" type="text" name="filtrar"/>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre torneo</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de fin</th>
+            <th>Numero de participantes</th>
+            <th>Accion 1</th>
+            <th>Accion 2</th>
+        </tr>
+    </thead>
+    <tbody id="datos">
+             <% ltorneos.forEach(function(elem) { %>
+                <tr>
+                    <td><%= elem.id %></td>
+                    <td><%= elem.nombreTorneo %></td>
+                    <td><%= elem.descripcion %></td>
+                    <td><%= elem.fechaInicio %></td>
+                    <td><%= elem.fechafin %></td>
+                    <td><%= elem.numEquipos %></td>
+                <td>
+                    <form action="editarTrn" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Editar" />
+                    </form>
+                </td>
+                <td>
+                    <form action="organizarTrn" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Organizar" />
+                    </form>
+                </td>
+
+                </tr>
+             <% }) %>
+
+     </tbody>
+</table>
+<br>
+<form action="agregarTrn" style="display:inline">
+    <input type="submit" value="Crear nuevo torneo" />
+</form>

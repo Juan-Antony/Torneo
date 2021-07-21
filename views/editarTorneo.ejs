@@ -1,0 +1,25 @@
+<h1>EDITAR TORNEO</h1>
+
+<form  action="editarTrn" method="POST">
+    Codigo: <input type="text" name="id" readonly/>
+    <br>
+    Nombre torneo: <input type="text" name="nombreTorneo" />
+    <br>
+    Descripcion: <input type="text" name="descripcion" />
+    <br>
+    Fecha inicio: <input type="text" name="fechaInicio" />
+    <br>
+    Fecha fin: <input type="text" name="fechafin" />
+    <br>
+    Num. max. de participantes: <input type="text" name="numMaxEquipos" readonly/>
+    <br>
+    Estado:
+    <select name="casino" >
+        <% lestadot.forEach(function(c) { %>
+           <option value="<%= c.id %>"><%= c.estadoTorneoId %></option>
+       <% }) %>
+    </select>
+    <br><br>
+   <input type="submit"  value="Aceptar" />
+   <input type="button" value="Cancelar" onclick="history.back()" />
+</form>

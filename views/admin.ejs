@@ -1,0 +1,56 @@
+<h1>LISTA DE USUARIOS</h1>
+
+<form action="logout" style="display:inline">
+    <input type="submit" value="Cerrar sesion" />
+</form>
+<br>
+<form action="nomcorr" METHOD="POST">
+    <div>
+        <label class="form-label">Buscar nombre/correo:</label>
+        <input id="form-nombre" class="form-control" type="text" name="filtrar"/>
+    </div>
+</form>
+Rol: 
+<input type="radio" name="rol" onclick=" "> Administrador
+<input type="radio" name="rol" onclick=" "> Organizador
+<input type="radio" name="rol" onclick=" "> Participante lider
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre completo</th>
+            <th>Correo electronico</th>
+            <th>Rol</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody id="datos">
+
+             <% lusuarios.forEach(function(elem) { %>
+                <tr>
+                    <td><%= elem.id %></td>
+                    <td><%= elem.nombreCompleto %></td>
+                    <td><%= elem.correo %></td>
+                        <% lroles.forEach(function(c) { 
+                            if (c.id == elem.rolId) { %>
+                                <td> <%= c.nombreRol %></td>
+                            <% } %>
+                        <% }) %>
+
+                <td>
+                    <form action="editarUsr" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Editar" />
+                    </form>
+                </td>
+
+                </tr>
+             <% }) %>
+
+     </tbody>
+</table>
+<br>
+<form action="agregarUsr" style="display:inline">
+    <input type="submit" value="Crear nuevo usuario" />
+</form>

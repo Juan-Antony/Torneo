@@ -1,0 +1,45 @@
+
+<h1>LISTA DE TORNEOS</h1>
+
+<form action="login" style="display:inline">
+    <input type="submit" value="Iniciar sesion" />
+</form>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Num. de Equipos</th>
+            <th>Ver fixture</th>
+            <th>Ver tabla de posiciones</th>
+        </tr>
+    </thead>
+    <tbody id="datos">
+             <% ltorneos.forEach(function(elem) { %>
+                <tr>
+                    <td><%= elem.nombreTorneo %></td>
+                    <td><%= elem.descripcion %></td>
+                    <td><%= elem.numEquipos %></td>
+                    <td><%= elem.numeroApuesta %></td>
+
+                <td>
+                    <form action="fixture" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Ver" />
+                    </form>
+                </td>
+                <td>
+                    <form action="posiciones" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Ver" />
+                    </form>
+                </td>
+                </tr>
+             <% }) %>
+
+     </tbody>
+</table>
+
+

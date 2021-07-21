@@ -1,0 +1,20 @@
+<h1>CREAR NUEVO USUARIO</h1>
+
+<form  action="agregarUsr" method="POST">
+    Nombre completo: <input type="text" name="nombreCompleto" />
+    <br>
+    Correo: <input type="text" name="correo" />
+    <br>
+    Contraseña: <input type="password" name="contrasenia" />
+    <br>
+    Rol: 
+    <select name="casino" >
+             <% lroles.forEach(function(c) { %>
+                <option value="<%= c.id %>"><%= c.nombreRol %></option>
+            <% }) %>
+    </select>
+
+    <br><br>
+   <input type="submit"  value="Aceptar" />
+   <input type="button" value="Cancelar" onclick="history.back()" />
+</form>

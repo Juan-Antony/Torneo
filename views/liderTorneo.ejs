@@ -1,0 +1,49 @@
+<h1>LISTA DE TORNEOS</h1>
+
+<form action="logout" style="display:inline">
+    <input type="submit" value="Cerrar sesion" />
+</form>
+<br>
+Estado: 
+<input type="radio" name="estadoTorneo" onclick=" "> Abierto
+<input type="radio" name="estadoTorneo" onclick=" "> En curso
+<input type="radio" name="estadoTorneo" onclick=" "> Cerrado
+¿Inscrito?:
+<input type="radio" name="inscrito" onclick=" "> Si
+<input type="radio" name="inscrito" onclick=" "> No
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Num. de Equipos</th>
+            <th>Num. Máx. de Equipos</th>
+            <th>Estado</th>
+            <th>¿Inscrito?</th>
+        </tr>
+    </thead>
+    <tbody id="datos">
+             <% ltorneos.forEach(function(elem) { %>
+                <tr>
+                    <td><%= elem.nombreTorneo %></td>
+                    <td><%= elem.descripcion %></td>
+                    <td><%= elem.numEquipos %></td>
+                    <td><%= elem.numMaxEquipos %></td>
+                    <td><%= elem.estadoTorneoId %></td>
+                <td>
+                    <form action="inscribirse" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Inscribirse" />
+                    </form>
+                    <form action="ver" method="POST">
+                        <input type="hidden" name="id" value="<%= elem.id %>" />
+                        <input type="submit" value="Ver" />
+                    </form>
+                </td>
+
+                </tr>
+             <% }) %>
+
+     </tbody>
+</table>

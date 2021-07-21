@@ -1,0 +1,17 @@
+body {
+    background-color: #eee;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px;
+}
+
+footer {
+    background-color: rgb(202, 202, 202);
+    padding: 20px;
+}
