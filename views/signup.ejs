@@ -6,7 +6,15 @@
     Correo: <input type="text" name="correo" />
     <br>
     Contraseña: <input type="password" name="contrasenia" />
-
+    <br>
+    Rol:
+    <select name="rolId">
+        <%  for(var i=0; i < roles.length; i++) {%>
+            <option value=<%= roles[i].id %>>
+                <%= roles[i].nombreRol %>
+            </option>
+        <% } %>
+    </select>
     <br><br>
     <input type="submit"  value="Registrarse" />
     <input type="button" value="Cancelar" onclick="history.back()" />

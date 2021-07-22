@@ -8,7 +8,7 @@ const expressEjsLayout = require('express-ejs-layouts')
 const hostname = 'localhost';
 const port = 3000;
 
-/* CRear la app Express */
+/* Crear la app Express */
 const app = express();
 
 app.use(morgan('combined'))
@@ -17,6 +17,7 @@ app.use(morgan('combined'))
 app.set('view engine','ejs');
 app.set('layout', '../layouts/plantilla');
 app.use(expressEjsLayout);
+
 
 /* MAnejo de Sesion */
 const session = require('express-session')
@@ -27,14 +28,13 @@ app.use(session ({
 }))
 
 /* Uso de Rutas */
-/*********************************************/
-/*******        REEMPLAZAR AQUI     **********/
-/*********************************************/
 const a1 = require('./routes/inicio')
 app.use('/', a1)
 //acá estamos agregando las rutas del archivo login
 const a2 = require('./routes/login')
 app.use('/login', a2)
+const a3 = require('./routes/manageadmin')
+app.use('/admin', a3)
 
 /* Archivos estaticos */
 app.use(express.static(__dirname + "/public"))
