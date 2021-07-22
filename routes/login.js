@@ -36,6 +36,8 @@ rutas.post('/', (req, res) => {
 rutas.post('/signup', (req, res) => {
     var correo = req.body.correo;
     var contrasenia = req.body.contrasenia;
+    var nombreCompleto = req.body.nombreCompleto;
+    var rolId = req.body.rolId;
     console.log(`${correo} - ${contrasenia}`)
     // ahora, ya tienes ambos datos en el servidor, entonces alli haces tu consulta a la db 
     res.send('login');
