@@ -8,10 +8,12 @@
     Contraseña: <input type="password" name="contrasenia" />
     <br>
     Rol: 
-    <select name="rol" >
-             <% lroles.forEach(function(c) { %>
-                <option value="<%= c.id %>"><%= c.nombreRol %></option>
-            <% }) %>
+    <select name="rol">
+        <%  for(var i=0; i < lroles.length; i++) {%>
+            <option value=<%= lroles[i].id %>>
+                <%= lroles[i].nombreRol %>
+            </option>
+        <% } %>
     </select>
 
     <br><br>

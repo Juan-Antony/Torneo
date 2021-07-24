@@ -17,7 +17,15 @@ app.use(morgan('combined'))
 app.set('view engine','ejs');
 app.set('layout', '../layouts/plantilla');
 app.use(expressEjsLayout);
-
+global.sess;
+global.links = [
+  {endpoint: '/equipos/listar', name: 'Equipos'},
+  {endpoint: '/torneos/listar', name: 'Torneos'},
+  {endpoint: '/usuarios/listar', name: 'Usuarios'},
+  {endpoint: '/roles/listar', name: 'Roles'},
+  {endpoint: '/inicio/login', name: 'Login'},
+  {endpoint: '/inicio/logout', name: 'logout'},
+];
 
 /* MAnejo de Sesion */
 const session = require('express-session')
@@ -30,7 +38,6 @@ app.use(session ({
 /* Uso de Rutas */
 const a1 = require('./routes/inicio')
 app.use('/', a1)
-//acá estamos agregando las rutas del archivo login
 const a2 = require('./routes/login')
 app.use('/login', a2)
 const a3 = require('./routes/manageadmin')

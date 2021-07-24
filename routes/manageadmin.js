@@ -45,11 +45,27 @@ rutas.get('/inicioadmin', (req,res) => {
         })
 })
 
-rutas.get('/agregarUsuario', (req, res) => {
-    res.render('agregarUsuario');
+rutas.get('/agregarUsr', (req, res) => {
+    res.render('agregarUsuario', {lroles: LR});
 })
 
-rutas.get('/editarUsuario', (req, res) => {
+rutas.post('/agregarUsr', (req, res) => {
+    usuario.create({
+            nombreCompleto: req.body.nombreCompleto,
+            correo: req.body.correo,
+            contrasenia: req.body.contrasenia,
+            rolId: req.body.rol
+        })
+        .then(LU => {
+            res.redirect('inicioadmin')
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send(error)
+        })
+})
+
+rutas.get('/editarUsr', (req, res) => {
     res.render('editarUsuario');
 })
 

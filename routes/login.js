@@ -33,15 +33,28 @@ rutas.post('/', (req, res) => {
     res.send('login');
 })
 */
-rutas.post('/signup', (req, res) => {
-    var correo = req.body.correo;
-    var contrasenia = req.body.contrasenia;
-    var nombreCompleto = req.body.nombreCompleto;
-    var rolId = req.body.rolId;
-    console.log(`${correo} - ${contrasenia}`)
-    // ahora, ya tienes ambos datos en el servidor, entonces alli haces tu consulta a la db 
-    res.send('login');
+
+/*
+rutas.get('/agregar', (req, res) => {
+    res.render('agregar', {lcasinos: LC})
 })
+
+rutas.post('/agregar', (req, res) => {
+    jugador.create({
+            nombreCompleto: req.body.nombreCompleto,
+            gananciaAcumulada: req.body.gananciaAcumulada,
+            numeroApuesta: req.body.numeroApuesta,
+            casinoId: req.body.casino
+        })
+        .then(rpta => {
+            res.redirect('consultar')
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send(error)
+        })
+})
+*/
 rutas.post('/',(req,res) => {
     sess = req.session;
     usuario.findOne({where: {correo: req.body.correo, contrasenia: req.body.contrasenia}})
@@ -49,12 +62,12 @@ rutas.post('/',(req,res) => {
         if(user){
             sess.user = user;
             if(sess.user.rolId === 1){
-                links = [
+                /*links = [
                     {endpoint: '/manageadmin/inicioadmin', name: 'Lista de Usuarios'},
                     {endpoint: '/manageadmin/agregarUsuario', name: 'Crear Nuevo Usuario'},
                     {endpoint: '/manageadmin/editarUsuario', name: 'Editar Usuario'},
                     {endpoint: '/login/logout', name: 'logout'},
-                  ];
+                  ];*/
                   res.redirect('/admin/inicioadmin');
             }
             else if(sess.user.rolId===2){
@@ -85,10 +98,20 @@ rutas.post('/',(req,res) => {
 });
 
 rutas.get('/registro',(req,res) => {
-    rol.findAll({ }).then(roles => {
-        res.render('signup',{roles: roles});
+    rol.findAll({ }).then(LR => {
+        res.render('signup',{lroles: LR});
     }).catch(error => res.status(400).send(error))
 });
+
+rutas.post('/signup', (req, res) => {
+    var correo = req.body.correo;
+    var contrasenia = req.body.contrasenia;
+    var nombreCompleto = req.body.nombreCompleto;
+    var rolId = req.body.rol;
+    console.log(`${correo} - ${contrasenia}`)
+    // ahora, ya tienes ambos datos en el servidor, entonces alli haces tu consulta a la db 
+    res.send('login');
+})
 
 rutas.get('/logout',(req,res) => {
     req.session.destroy((err) => {
