@@ -1,15 +1,15 @@
 <h1>CREAR NUEVO TORNEO</h1>
 
 <form  action="agregarTrn" method="POST">
-    Nombre torneo: <input type="text" name="nombreTorneo" />
+    Nombre torneo: <input type="text" name="nombreTorneo" required/>
     <br>
-    Descripcion: <input type="text" name="descripcion" />
+    Descripcion: <input type="text" name="descripcion" required/>
     <br>
-    Fecha inicio: <input type="text" name="fechaInicio" />
+    Fecha inicio: <input type="text" name="fechaInicio" required/>
     <br>
-    Fecha fin: <input type="text" name="fechafin" />
+    Fecha fin: <input type="text" name="fechafin" required/>
     <br>
-    Num. max. de participantes: <input type="text" name="numMaxEquipos" />
+    Num. max. de participantes: <input type="text" name="numMaxEquipos" required/>
     <br><br>
    <input type="submit"  value="Aceptar" />
    <input type="button" value="Cancelar" onclick="history.back()" />

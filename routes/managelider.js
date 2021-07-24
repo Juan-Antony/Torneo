@@ -45,4 +45,29 @@ rutas.get('/iniciolider', (req,res) => {
         })
 })
 
+var LT = []
+rutas.get('/', (req, res) => {
+    torneo.findAll({})
+        .then(listaTorneos => {
+            LT = listaTorneos
+            res.redirect('lider/torneos')
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send(error)
+        })
+})
+
+/* Consulta total */
+rutas.get('/torneos', (req,res) => {
+    torneo.findAll({})
+        .then(LT => {
+            res.render('liderTorneo', {ltorneos: LT})
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).send(error)
+        })
+})
+
 module.exports = rutas

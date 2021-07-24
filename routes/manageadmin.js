@@ -57,7 +57,7 @@ rutas.post('/agregarUsr', (req, res) => {
             rolId: req.body.rol
         })
         .then(LU => {
-            res.redirect('inicioadmin')
+            res.redirect('admin/inicioadmin')
         })
         .catch(error => {
             console.log(error)

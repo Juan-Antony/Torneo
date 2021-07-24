@@ -1,16 +1,14 @@
 <h1>EDITAR USUARIO</h1>
 
 <form action="editarUsr" method="POST">
-    Nombre completo: <input type="text" name="nombreCompleto" />
+    Nombre completo: <input type="text" name="nombreCompleto" value="<%- nombreCompleto %>"/>
     <br>
-    Correo: <input type="text" name="correo" />
+    Correo: <input type="text" name="correo" value="<%- correo %>"/>
     <br>
     Rol: 
-    <select name="rol">
+    <select name="rolId">
         <%  for(var i=0; i < roles.length; i++) {%>
-            <option value=<%= roles[i].id %>>
-                <%= roles[i].nombreRol %>
-            </option>
+        <option name="RolId" value=<%= roles[i].id %>> <%= roles[i].Nombre %> </option>
         <% } %>
     </select>
 
