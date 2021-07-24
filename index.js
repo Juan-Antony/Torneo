@@ -35,6 +35,10 @@ const a2 = require('./routes/login')
 app.use('/login', a2)
 const a3 = require('./routes/manageadmin')
 app.use('/admin', a3)
+const a4 = require('./routes/manageorga')
+app.use('/orga', a4)
+const a5 = require('./routes/managelider')
+app.use('/lider', a5)
 
 /* Archivos estaticos */
 app.use(express.static(__dirname + "/public"))

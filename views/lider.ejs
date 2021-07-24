@@ -1,19 +1,24 @@
 <h1>PERFIL</h1>
 
-<form action="logout" style="display:inline">
+<form action="/login/logout" method="GET" style="display:inline">
     <input type="submit" value="Cerrar sesion" />
 </form>
+<br>
+<br>
 <br>
 <form action="torneos" style="display:inline">
     <input type="submit" value="Torneos" />
 </form>
 <br>
-<form action="miperfil" method="POST">
-    <input type="hidden" name="id" value="<%= elem.id %>" />
-    <input type="submit" value="Mi Perfil" />
-</form>
 <br>
-<form action="miequipo" method="POST">
-    <input type="hidden" name="id" value="<%= elem.id %>" />
-    <input type="submit" value="Mi Equipo" />
-</form>
+<% lusuarios.forEach(function(elem) { %>
+    <form action="miperfil" method="POST">
+        <input type="hidden" name="id" value="<%= elem.id %>" />
+        <input type="submit" value="Mi Perfil" />
+    </form>
+    <br>
+    <form action="miequipo" method="POST">
+        <input type="hidden" name="id" value="<%= elem.id %>" />
+        <input type="submit" value="Mi Equipo" />
+    </form>
+<% }) %>

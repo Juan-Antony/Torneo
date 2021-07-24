@@ -59,23 +59,23 @@ rutas.post('/',(req,res) => {
             }
             else if(sess.user.rolId===2){
                 links = [
-                    {endpoint: '/manageorga', name: 'Torneos'},
+                    {endpoint: '/manageorga/inicioorga', name: 'Torneos'},
                     {endpoint: '/manageorga/agregarTorneo', name: 'Crear Nuevo Torneo'},
                     {endpoint: '/manageorga/editarTorneo', name: 'Editar Torneo'},
                     {endpoint: '/manageorga/organizarTorneo', name: 'Organizar Torneo'},
                     {endpoint: '/login/logout', name: 'logout'},
                   ];
-                  res.redirect('/manageorga');
+                  res.redirect('/orga/inicioorga');
             }
             else{
                 links = [
-                    {endpoint: '/managelider', name: 'Perfil'},
+                    {endpoint: '/managelider/iniciolider', name: 'Perfil'},
                     {endpoint: '/mangelider/liderTorneo', name: 'Lista de Torneos'},
                     {endpoint: '/managelider/editarPerfil', name: 'Editar mi Perfil'},
                     {endpoint: '/managelider/editarEquipo', name: 'Editar Datos de mi Equipo'},
                     {endpoint: '/login/logout', name: 'logout'},
                   ];
-                  res.redirect('/managelider');
+                  res.redirect('/lider/iniciolider');
             }
         }else{
             res.redirect('/');
